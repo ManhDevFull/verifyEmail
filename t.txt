@@ -1,0 +1,25 @@
+# Run:
+curl -s \
+	-X POST \
+	--user "5a88a97b44ab9cc747bebefc648ebd68:712af3eef18afb8c93f32c9b9d410e6a" \
+	https://api.mailjet.com/v3.1/send \
+	-H 'Content-Type: application/json' \
+	-d '{
+		"Messages":[
+				{
+						"From": {
+								"Email": "thanhmanhdangfa@gmail.com",
+								"Name": "Me"
+						},
+						"To": [
+								{
+										"Email": "khoahocsw@gmail.com",
+										"Name": "You"
+								}
+						],
+						"Subject": "My first Mailjet Email!",
+						"TextPart": "Greetings from Mailjet!",
+						"HTMLPart": "<h3>Dear passenger 1, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!</h3><br />May the delivery force be with you!"
+				}
+		]
+	}'
