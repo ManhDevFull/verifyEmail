@@ -37,9 +37,15 @@ app.UseSwaggerUI();
 app.UseExceptionHandler();
 
 app.MapControllers();
-app.MapGet("/health", () => Results.Ok(new
+app.MapMethods("/health", new[] { "GET", "HEAD" }, (HttpContext ctx) =>
 {
-    status = "ok",
-    time = DateTime.UtcNow
-}));
+    if (ctx.Request.Method == HttpMethods.Head)
+        return Results.Ok();
+
+    return Results.Ok(new
+    {
+        status = "ok",
+        time = DateTime.UtcNow
+    });
+});
 app.Run();
