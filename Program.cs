@@ -37,5 +37,9 @@ app.UseSwaggerUI();
 app.UseExceptionHandler();
 
 app.MapControllers();
-
+app.MapGet("/health", () => Results.Ok(new
+{
+    status = "ok",
+    time = DateTime.UtcNow
+}));
 app.Run();
